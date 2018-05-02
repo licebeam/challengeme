@@ -1,6 +1,7 @@
 body {
   overflow: hidden;
-  color: white;
+  color: #F0F2F0;
+  font-family: "Source Sans Pro", sans-serif;
   background-color: #A60531;
   background-image: url("bg/hauntedhouse.jpg");
 }
@@ -15,13 +16,13 @@ h1 {
 }
 
 .mainArea {
-  height: 85vh;
+  height: 100vh;
   background-color: #002937;
 }
 
 .gameList {
   background-color: #001920;
-  height: 85vh;
+  height: 100vh;
 }
 
 #gametag {
@@ -29,9 +30,13 @@ h1 {
   color: white;
 }
 
+.gameName {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 30pt;
+}
+
 li {
   margin: 0 auto;
-  padding-top: 5px;
 }
 
 ul {
@@ -55,10 +60,6 @@ ul {
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-border {
   background-color: #001920;
   border: none;
-}
-
-.botbar {
-  height: 200px;
-  background-color: #00010F;
+  color: #F0F2F0;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,34 +1,42 @@
 $titlefont: 'Black Han Sans', sans-serif;
-
+$subfont: 'Source Sans Pro', sans-serif;
+$darkC: #00010F;
+$midC: #001920;
+$lightC: #002937;
+$alttextC: #F0F2F0;
+$mainPink: #D82668;
 
 body 
     overflow: hidden;
-    color: white;
+    color: $alttextC;
+    font-family: $subfont;
     background-color: #A60531;
     background-image: url("bg/hauntedhouse.jpg")
     
 
 h1
     font-family: $titlefont;
-    color: #D82668;
+    color: $mainPink;
 
 .navbar
-    background-color: #00010F;
+    background-color: $darkC;
 
 .mainArea
     
-    height: 85vh;
-    background-color: #002937;
+    height: 100vh;
+    background-color: $lightC;
     
 .gameList
-    background-color: #001920;
-    height: 85vh;
+    background-color: $midC;
+    height: 100vh;
 #gametag 
     text-align: center;
     color: white;
+.gameName
+    font-family: $subfont;
+    font-size: 30pt;
 li 
     margin: 0 auto;
-    padding-top: 5px;
    
 
 ul 
@@ -46,12 +54,7 @@ ul
 
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited,  .btn-border
-    background-color: #001920;
+    background-color: $midC;
     border: none;
-
-.botbar
-    height: 200px;
-    
-    
-    background-color: #00010F;
+    color: $alttextC;
 

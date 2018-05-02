@@ -22,6 +22,9 @@ function changeGame(name) {
   $(".chal1dif").text("");
   $(".chal2dif").text("");
   $(".chal3dif").text("");
+  $("#roll1").text("Roll");
+  $("#roll2").text("Roll");
+  $("#roll3").text("Roll");
 }
 $("#roll1").click(function() {
   randomChal1(curgame);
@@ -34,12 +37,15 @@ $("#roll3").click(function() {
 });
 function randomChal1(ng) {
   randomEvent(".chal1", ng);
+  $("#roll1").text("Re-Roll?");
 }
 function randomChal2(ng) {
   randomEvent(".chal2", ng);
+  $("#roll2").text("Re-Roll?");
 }
 function randomChal3(ng) {
   randomEvent(".chal3", ng);
+  $("#roll3").text("Re-Roll?");
 }
 function randomEvent(box, gamenum) {
   var rando = Math.floor(Math.random() * 4 + 0);
@@ -57,3 +63,18 @@ function randomEvent(box, gamenum) {
     $(box + "dif").css("color", "red");
   }
 }
+
+$("#reset").click(function() {
+  $(".chal1Text").text("Waiting for Roll");
+  $(".chal2Text").text("Waiting for Roll");
+  $(".chal3Text").text("Waiting for Roll");
+  $(".chal1name").text("");
+  $(".chal2name").text("");
+  $(".chal3name").text("");
+  $(".chal1dif").text("");
+  $(".chal2dif").text("");
+  $(".chal3dif").text("");
+  $("#roll1").text("Roll");
+  $("#roll2").text("Roll");
+  $("#roll3").text("Roll");
+});

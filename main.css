@@ -1,5 +1,4 @@
 body {
-  overflow: hidden;
   color: #F0F2F0;
   font-family: "Source Sans Pro", sans-serif;
   background-color: #A60531;
@@ -50,11 +49,11 @@ ul {
 }
 
 #subtext {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .centerArea {
-  padding: 30px;
+  padding: 20px 60px 0px 60px;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-border {

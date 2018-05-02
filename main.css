@@ -2,6 +2,7 @@ body {
   overflow: hidden;
   color: white;
   background-color: #A60531;
+  background-image: url("bg/hauntedhouse.jpg");
 }
 
 h1 {
@@ -10,17 +11,17 @@ h1 {
 }
 
 .navbar {
-  background-color: #001920;
+  background-color: #00010F;
 }
 
 .mainArea {
-  height: 100vh;
+  height: 85vh;
   background-color: #002937;
 }
 
 .gameList {
   background-color: #001920;
-  height: 100vh;
+  height: 85vh;
 }
 
 #gametag {
@@ -54,5 +55,10 @@ ul {
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-border {
   background-color: #001920;
   border: none;
+}
+
+.botbar {
+  height: 200px;
+  background-color: #00010F;
 }
 /*# sourceMappingURL=main.css.map */

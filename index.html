@@ -4,24 +4,93 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Challenge Me</title>
+    <title>Challenge Me pre-alpha v.01</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 
 </head>
 
 <body>
-    <h1>Challenge Me</h1>
-    <h2>Challenge Me is a webapp focused on Challenging players of various games</h2>
+    <div class="container-fluid">
+        <nav class="navbar navbar-light ">
+            <h1>Challenge Me</h1>
+            <p>Challenge Me is a webapp focused on Challenging players of various games</p>
+        </nav>
+
+        <div class="row">
+            <div class="col-s gameList">
+                <h5>Games</h5>
+                <ul>
+                    <li>
+                        <button onclick="changeGame('Slay The Spire')" type=" button " class="btn btn-primary ">Slay The Spire</button>
+                    </li>
+                    <li>
+                        <button onclick="changeGame('Fortnite')" type=" button " class="btn btn-primary gamebutton">Fortnite</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm titlePage">
+
+
+
+                <div class="row mainArea">
+                    <div class="col">
+
+                        <h1 class="gameName">Slay The Spire</h1>
+                        <h2>Challenges</h2>
+
+                        <ul>
+                            <li>
+                                <h5>Challenge 1: </h5>
+                                <button onclick="randomChal1()" type=" button " class="btn btn-primary ">Roll</button>
+                                <p class="chal1name"></p>
+                                <p class="chal1dif"></p>
+                                <p class="chal1Text">Waiting for Roll</p>
+                            </li>
+                            <li>
+                                <h5>Challenge 2: </h5>
+                                <button onclick="randomChal2()" type=" button " class="btn btn-primary ">Roll</button>
+                                <p class="chal2name"></p>
+                                <p class="chal2dif"></p>
+                                <p class="chal2Text">Waiting for Roll</p>
+                            </li>
+                            <li>
+                                <h5>Challenge 3: </h5>
+                                <button onclick="randomChal3()" type=" button " class="btn btn-primary ">Roll</button>
+                                <p class="chal3name"></p>
+                                <p class="chal3dif"></p>
+                                <p class="chal3Text">Waiting for Roll</p>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
 </body>
+
+<!--Get the games-->
+
+<script src="main.js"></script>
+<script src="games/slay.js"></script>
+<script src="games/fortnite.js"></script>
 
 </html>

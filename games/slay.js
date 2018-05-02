@@ -7,7 +7,7 @@ var slay = [
   {
     Name: "Site Specific",
     Rarity: "Easy",
-    Description: "You can only heal at rest sites."
+    Description: "You cannot upgrade at rest sites."
   },
   {
     Name: "Buyer Beware",
@@ -18,5 +18,10 @@ var slay = [
     Name: "Danger Dive",
     Rarity: "Hard",
     Description: "You must fight every Elite possible on this run."
+  },
+  {
+    Name: "Iron Bearer",
+    Rarity: "Easy",
+    Description: "You have to pick Ironclad."
   }
 ];

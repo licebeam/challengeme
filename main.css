@@ -22,15 +22,27 @@ h1 {
 .gameList {
   background-color: #001920;
   height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  background-color: #001920;
+  height: 100vh;
 }
 
 #gametag {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+#infotag {
+  margin-top: 40px;
   text-align: center;
   color: white;
 }
 
 .gameName {
-  font-family: "Source Sans Pro", sans-serif;
   font-size: 30pt;
 }
 
@@ -42,10 +54,6 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.sidebuttons {
-  text-align: center;
 }
 
 #subtext {
@@ -60,5 +68,38 @@ ul {
   background-color: #001920;
   border: none;
   color: #F0F2F0;
+}
+
+.botbar {
+  height: 100px;
+  background-color: #00010F;
+}
+
+#gamebutton1, #gamebutton2 {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.sidebuttons {
+  text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+  .gameName {
+    font-size: 20pt;
+  }
+  #infotag {
+    font-size: 5pt;
+  }
+  #gametag {
+    font-size: 5pt;
+  }
+  #gamebutton1, #gamebutton2 {
+    font-size: 5pt;
+  }
+  #subtext {
+    font-size: 10pt;
+  }
 }
 /*# sourceMappingURL=main.css.map */

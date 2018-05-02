@@ -1,5 +1,5 @@
-if (dataSet === "Slay The Spire") {
-  var challenges = [
+if ($(".gameName").text("Slay The Spire")) {
+  var challenges1 = [
     {
       Name: "Stress Test",
       Rarity: "Easy",
@@ -33,18 +33,20 @@ if (dataSet === "Slay The Spire") {
   }
   function randomEvent(box) {
     var rando = Math.floor(Math.random() * 4 + 0);
-    $(box + "name").text(challenges[rando].Name);
-    $(box + "dif").text(challenges[rando].Rarity);
-    $(box + "Text").text(challenges[rando].Description);
+    $(box + "name").text(challenges1[rando].Name);
+    $(box + "dif").text(challenges1[rando].Rarity);
+    $(box + "Text").text(challenges1[rando].Description);
 
-    if (challenges[rando].Rarity == "Easy") {
+    if (challenges1[rando].Rarity == "Easy") {
       $(box + "dif").css("color", "green");
     }
-    if (challenges[rando].Rarity == "Medium") {
+    if (challenges1[rando].Rarity == "Medium") {
       $(box + "dif").css("color", "orange");
     }
-    if (challenges[rando].Rarity == "Hard") {
+    if (challenges1[rando].Rarity == "Hard") {
       $(box + "dif").css("color", "red");
     }
   }
+} else {
+  //alert("not slay");
 }

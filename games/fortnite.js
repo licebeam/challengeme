@@ -1,19 +1,24 @@
-if (dataSet === "Fortnite") {
-  var challenges = [
+if ($(".gameName").text("Fortnite")) {
+  var challenges1 = [
     {
-      Name: "Shooting Range",
+      Name: "Test",
       Rarity: "Easy",
       Description: "You cannot use potions for this run."
     },
     {
-      Name: "Stress Test",
+      Name: "Test",
       Rarity: "Easy",
       Description: "You can only heal at rest sites."
     },
     {
-      Name: "Buyer Beware",
+      Name: "test",
       Rarity: "Medium",
       Description: "You cannot use the shop more than once this run."
+    },
+    {
+      Name: "test",
+      Rarity: "Hard",
+      Description: "You must fight every Elite possible on this run."
     }
   ];
 
@@ -27,19 +32,21 @@ if (dataSet === "Fortnite") {
     randomEvent(".chal3");
   }
   function randomEvent(box) {
-    var rando = Math.floor(Math.random() * 2 + 0);
-    $(box + "name").text(challenges[rando].Name);
-    $(box + "dif").text(challenges[rando].Rarity);
-    $(box + "Text").text(challenges[rando].Description);
+    var rando = Math.floor(Math.random() * 4 + 0);
+    $(box + "name").text(challenges1[rando].Name);
+    $(box + "dif").text(challenges1[rando].Rarity);
+    $(box + "Text").text(challenges1[rando].Description);
 
-    if (challenges[rando].Rarity == "Easy") {
+    if (challenges1[rando].Rarity == "Easy") {
       $(box + "dif").css("color", "green");
     }
-    if (challenges[rando].Rarity == "Medium") {
+    if (challenges1[rando].Rarity == "Medium") {
       $(box + "dif").css("color", "orange");
     }
-    if (challenges[rando].Rarity == "Hard") {
+    if (challenges1[rando].Rarity == "Hard") {
       $(box + "dif").css("color", "red");
     }
   }
+} else {
+  //alert("not slay");
 }

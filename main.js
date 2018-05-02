@@ -1,13 +1,12 @@
 var curgame;
+curgame = slay;
 $("#gamebutton1").click(function() {
   changeGame("Slay The Spire");
-  alert($(".gameName").text());
   curgame = slay;
 });
 
 $("#gamebutton2").click(function() {
   changeGame("Fortnite");
-  alert($(".gameName").text());
   curgame = fort;
 });
 

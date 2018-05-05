@@ -87,7 +87,7 @@
         <h1>Challenge Me</h1>
         <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
         <div id="userName"></div>
-        <div id="sign-in-status"></div>
+
         <button type=" button " id="signinButton" class="btn btn-primary ">
             <div>Sign In</div>
         </button>
@@ -140,10 +140,10 @@
                 displayName: $("#nameUpdater").val() //THIS NEEDS TO BE VALIDATED FOR INJECTION
             })
             .then(function () {
-                alert('fixing');
+                //ok
             })
             .catch(function (error) {
-                alert('error updating name');
+                //fixed
             });
     });
 </script>

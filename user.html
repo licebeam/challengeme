@@ -21,31 +21,27 @@
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     // User is signed in.
+
                     var displayName = user.displayName;
                     var email = user.email;
                     var emailVerified = user.emailVerified;
                     var photoURL = user.photoURL;
-                    var uid = user.uid;
-                    var phoneNumber = user.phoneNumber;
-                    var providerData = user.providerData;
+                    $("#userName").text(displayName);
                     user.getIdToken().then(function (accessToken) {
                         document.getElementById('sign-in-status').textContent = 'Signed in';
                         document.getElementById('sign-in').textContent = 'Sign out';
                         document.getElementById('account-details').textContent = JSON.stringify({
                             displayName: displayName,
                             email: email,
-                            emailVerified: emailVerified,
-                            phoneNumber: phoneNumber,
                             photoURL: photoURL,
-                            uid: uid,
-                            accessToken: accessToken,
-                            providerData: providerData
+
                         }, null, '  ');
                     });
                 } else {
                     // User is signed out.
                     document.getElementById('sign-in-status').textContent = 'Signed out';
                     document.getElementById('sign-in').textContent = 'Sign in';
+                    $("#userName").text('');
                     document.getElementById('account-details').textContent = 'null';
                 }
             }, function (error) {
@@ -81,17 +77,16 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-light ">
         <h1>Challenge Me</h1>
         <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <div id="sign-in-status"></div>
+        <div id="userName"></div>
+        <div id="sign-in-status"></div>
 
-            <button type=" button " id="signoutButton" class="btn btn-primary ">
-                <div id="sign-in"></div>
-            </button>
-
+        <button type=" button " id="signoutButton" class="btn btn-primary ">
+            <div id="sign-in"></div>
+        </button>
+        <a href="user.html">Account</a>
         </div>
     </nav>
     <div class="container">
@@ -100,18 +95,6 @@
         <div class="row">
 
             <div class="col-4 col-sm-2 gameList mx-auto">
-                <h5 id="gametag">Games</h5>
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="gamebutton1" class="btn btn-primary text-center ">Slay The Spire</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Fortnite</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Path of Exile</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Hearth Stone</button>
-                </div>
-                <em></em>
-                <h5 id="infotag">Information</h5>
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="gamebutton1" class="btn btn-primary ">How it works</button>
-                </div>
 
             </div>
 
@@ -119,42 +102,18 @@
                 <div class="row mainArea">
                     <div class="col centerArea">
 
-                        <h1 class="gameName">Slay The Spire</h1>
-                        <div class="row">
-                            <div class="col-sm">
-                                <h3>Challenges</h3>
+                        <h1>User Information</h1>
+
+
+                        <form>
+                            <div class="form-group">
+                                <label for="nameupdate">User Name</label>
+                                <input type="Name" class="form-control" id="nameUpdater" aria-describedby="nameHelp" placeholder="Enter new user name">
+                                <small id="nameHelp" class="form-text text-muted">Hit submit to update your user name.</small>
                             </div>
-                            <div class="col-sm">
-                                <button id="reset" type=" button " class="btn btn-warning btn-sm">Reset</button>
-                                <button id="reset" type=" button " class="btn btn-warning btn-sm">Save</button>
-                            </div>
 
-                        </div>
-                        <ul>
-                            <li>
-                                <h5>Challenge 1: </h5>
-                                <button id="roll1" type=" button " class="btn btn-success btn-sm ">Roll</button>
-                                <p class="chal1name"></p>
-                                <p class="chal1dif"></p>
-                                <p class="chal1Text">Waiting for Roll</p>
-                            </li>
-                            <li>
-                                <h5>Challenge 2: </h5>
-                                <button id="roll2" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal2name"></p>
-                                <p class="chal2dif"></p>
-                                <p class="chal2Text">Waiting for Roll</p>
-                            </li>
-                            <li>
-                                <h5>Challenge 3: </h5>
-                                <button id="roll3" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal3name"></p>
-                                <p class="chal3dif"></p>
-                                <p class="chal3Text">Waiting for Roll</p>
-                            </li>
-
-                        </ul>
-
+                            <button type="submit" id="updateName" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
 

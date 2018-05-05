@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAK3l0fKoyTPXEZikjqqk1tWx7ZcCQi_gA",
+            authDomain: "challengeme-7b336.firebaseapp.com",
+            databaseURL: "https://challengeme-7b336.firebaseio.com",
+            projectId: "challengeme-7b336",
+            storageBucket: "challengeme-7b336.appspot.com",
+            messagingSenderId: "339763651458"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+    <script type="text/javascript">
+        // FirebaseUI config.
+        var uiConfig = {
+            signInSuccessUrl: 'index.html',
+            'credentialHelper': firebaseui.auth.CredentialHelper.NONE,
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+
+            ],
+            // Terms of service url.
+            tosUrl: '<your-tos-url>'
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Challenge Me pre-alpha v.01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-light ">
+        <h1>Challenge Me</h1>
+        <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
+        <div id="sign-in-status"></div>
+
+        <button type=" button " id="signoutButton" class="btn btn-primary ">
+            <div id="sign-in"></div>
+        </button>
+        <a href="user.html">Account</a>
+        </div>
+    </nav>
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="col-4 col-sm-2 gameList mx-auto">
+
+            </div>
+
+            <div class="col-8 col-sm-10 titlePage">
+                <div class="row mainArea">
+                    <div class="col centerArea">
+                        <div id="firebaseui-auth-container"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="botbar row">
+
+        </div>
+
+</body>
+
+</html>

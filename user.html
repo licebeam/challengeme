@@ -18,10 +18,13 @@
     </script>
     <script type="text/javascript">
         initApp = function () {
+            $("#signinButton").hide();
+            $("#signoutButton").hide();
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     // User is signed in.
-
+                    $("#signinButton").hide();
+                    $("#signoutButton").show();
                     var displayName = user.displayName;
                     var email = user.email;
                     var emailVerified = user.emailVerified;
@@ -39,10 +42,14 @@
                     });
                 } else {
                     // User is signed out.
-                    document.getElementById('sign-in-status').textContent = 'Signed out';
-                    document.getElementById('sign-in').textContent = 'Sign in';
-                    $("#userName").text('');
+                    $("#signinButton").show();
+                    $("#signoutButton").hide();
                     document.getElementById('account-details').textContent = 'null';
+                    document.getElementById('sign-in-status').textContent = 'Signed out';
+                    $("#userName").text('');
+                    document.getElementById('sign-in').textContent = 'Sign in';
+
+
                 }
             }, function (error) {
                 console.log(error);
@@ -77,24 +84,30 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-light ">
         <h1>Challenge Me</h1>
         <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
         <div id="userName"></div>
         <div id="sign-in-status"></div>
-
-        <button type=" button " id="signoutButton" class="btn btn-primary ">
-            <div id="sign-in"></div>
+        <button type=" button " id="signinButton" class="btn btn-primary ">
+            <div>Sign In</div>
         </button>
+        <button type=" button " id="signoutButton" class="btn btn-primary ">
+            <div>Sign Out</div>
+        </button>
+
         <a href="user.html">Account</a>
         </div>
     </nav>
     <div class="container">
 
 
+
         <div class="row">
 
             <div class="col-4 col-sm-2 gameList mx-auto">
+                <button type=" button " id="homeButton" class="btn btn-primary ">Home</button>
 
             </div>
 

@@ -81,36 +81,6 @@ $("#reset").click(function() {
 });
 
 //auth and stuff
-var signedOut;
-$("#homeButton").click(function() {
-  window.location.href = "index.html";
-});
-$("#signoutButton").click(function() {
-  if (signedOut != true) {
-    firebase
-      .auth()
-      .signOut()
-      .then(
-        function() {
-          console.log("Signed Out");
-          $("signoutButton").addClass("signedOut");
-
-          signedOut = true;
-        },
-        function(error) {
-          console.error("Sign Out Error", error);
-        }
-      );
-  }
-});
-$("#signoutButton").click(function() {
-  if (signedOut === true) {
-    window.location.href = "login.html";
-    $("#signoutButton").removeClass(".signedOut");
-    signedOut = false;
-  }
-});
-
 $("#updateName").click(function() {
   var user = firebase.auth().currentUser;
 
@@ -119,9 +89,37 @@ $("#updateName").click(function() {
       displayName: $("#nameUpdater").val() //THIS NEEDS TO BE VALIDATED FOR INJECTION
     })
     .then(function() {
-      // Update successful.
+      alert("updated name");
     })
     .catch(function(error) {
-      // An error happened.
+      //eror
     });
+});
+$("#homeButton").click(function() {
+  //signed in input
+  window.location.href = "index.html";
+});
+
+$("#signoutButton").click(function() {
+  firebase
+    .auth()
+    .signOut()
+    .then(
+      function() {
+        console.log("Signed Out");
+        window.location.href = "index.html";
+      },
+      function(error) {
+        console.error("Sign Out Error", error);
+      }
+    );
+});
+
+$("#signinButton").click(function() {
+  //signed in input
+  window.location.href = "login.html";
+});
+
+$("#homeButton").click(function() {
+  window.location.href = "index.html";
 });

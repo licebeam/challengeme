@@ -80,21 +80,6 @@ $("#reset").click(function() {
   $("#roll3").text("Roll");
 });
 
-//auth and stuff
-$("#updateName").click(function() {
-  var user = firebase.auth().currentUser;
-
-  user
-    .updateProfile({
-      displayName: $("#nameUpdater").val() //THIS NEEDS TO BE VALIDATED FOR INJECTION
-    })
-    .then(function() {
-      alert("updated name");
-    })
-    .catch(function(error) {
-      //eror
-    });
-});
 $("#homeButton").click(function() {
   //signed in input
   window.location.href = "index.html";

@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -16,6 +15,7 @@
         };
         firebase.initializeApp(config);
     </script>
+
     <script type="text/javascript">
         initApp = function () {
             $("#signinButton").hide();
@@ -24,7 +24,8 @@
                 if (user) {
                     // User is signed in.
                     $("#signinButton").hide();
-                    $("#signoutButton").show();
+                    $("#signoutButton").show()
+                    $("#userPage").show();;
                     var displayName = user.displayName;
                     var email = user.email;
                     var emailVerified = user.emailVerified;
@@ -44,12 +45,11 @@
                     // User is signed out.
                     $("#signinButton").show();
                     $("#signoutButton").hide();
-                    document.getElementById('account-details').textContent = 'null';
+                    $("#userPage").hide();
                     document.getElementById('sign-in-status').textContent = 'Signed out';
                     $("#userName").text('');
+                    document.getElementById('account-details').textContent = 'null';
                     document.getElementById('sign-in').textContent = 'Sign in';
-
-
                 }
             }, function (error) {
                 console.log(error);
@@ -60,23 +60,21 @@
             initApp()
         });
     </script>
+
     <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Challenge Me pre-alpha v.01</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -96,48 +94,31 @@
         <button type=" button " id="signoutButton" class="btn btn-primary ">
             <div>Sign Out</div>
         </button>
-
-        <a href="user.html">Account</a>
+        <a id="userPage" href="user.html">Account</a>
         </div>
     </nav>
     <div class="container">
-
-
-
         <div class="row">
-
             <div class="col-4 col-sm-2 gameList mx-auto">
                 <button type=" button " id="homeButton" class="btn btn-primary ">Home</button>
-
             </div>
-
             <div class="col-8 col-sm-10 titlePage">
                 <div class="row mainArea">
                     <div class="col centerArea">
-
                         <h1>User Information</h1>
-
-
                         <form>
                             <div class="form-group">
                                 <label for="nameupdate">User Name</label>
                                 <input type="Name" class="form-control" id="nameUpdater" aria-describedby="nameHelp" placeholder="Enter new user name">
                                 <small id="nameHelp" class="form-text text-muted">Hit submit to update your user name.</small>
                             </div>
-
                             <button type="submit" id="updateName" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
-
         <div class="botbar row">
-
         </div>
 </body>
 
@@ -149,6 +130,22 @@
 
 
 
+<script>
+    //auth and stuff
+    $("#updateName").click(function () {
+        var user = firebase.auth().currentUser;
 
+        user
+            .updateProfile({
+                displayName: $("#nameUpdater").val() //THIS NEEDS TO BE VALIDATED FOR INJECTION
+            })
+            .then(function () {
+                alert('fixing');
+            })
+            .catch(function (error) {
+                alert('error updating name');
+            });
+    });
+</script>
 
 </html>

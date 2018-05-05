@@ -27,6 +27,7 @@
                     var displayName = user.displayName;
                     $("#signinButton").hide();
                     $("#signoutButton").show();
+                    $("#userPage").show();
                     var email = user.email;
                     var emailVerified = user.emailVerified;
                     var photoURL = user.photoURL;
@@ -44,6 +45,7 @@
                 } else {
                     // User is signed out.
                     $("#signinButton").show();
+                    $("#userPage").hide();
                     $("#signoutButton").hide();
 
                     document.getElementById('account-details').textContent = 'null';
@@ -99,7 +101,7 @@
             <div>Sign Out</div>
         </button>
 
-        <a href="user.html">Account</a>
+        <a id="userPage" href="user.html">Account</a>
         </div>
     </nav>
     <div class="container">

@@ -2,118 +2,48 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Challenge Me pre-alpha v.01</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBEEV00fRd94R7ALLujr4EdBThIj8Sr5Rs",
+            authDomain: "challengeme-cbf46.firebaseapp.com",
+            databaseURL: "https://challengeme-cbf46.firebaseio.com",
+            projectId: "challengeme-cbf46",
+            storageBucket: "challengeme-cbf46.appspot.com",
+            messagingSenderId: "571319921032"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+    <script type="text/javascript">
+        // FirebaseUI config.
+        var uiConfig = {
+            signInSuccessUrl: 'challenge.html',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+            ],
+            // Terms of service url.
+            tosUrl: '<your-tos-url>'
+        };
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-light ">
-        <h1>Challenge Me</h1>
-        <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">Sign Up</button>
-            <button type="button" class="btn btn-primary">Log In</button>
-        </div>
-    </nav>
-    <div class="container">
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
 
-
-        <div class="row">
-
-            <div class="col-4 col-sm-2 gameList mx-auto">
-                <h5 id="gametag">Games</h5>
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="gamebutton1" class="btn btn-primary text-center ">Slay The Spire</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Fortnite</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Path of Exile</button>
-                    <button type=" button " id="gamebutton2" class="btn btn-primary ">Hearth Stone</button>
-                </div>
-                <em></em>
-                <h5 id="infotag">Information</h5>
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="gamebutton1" class="btn btn-primary ">How it works</button>
-                </div>
-
-            </div>
-
-            <div class="col-8 col-sm-10 titlePage">
-                <div class="row mainArea">
-                    <div class="col centerArea">
-
-                        <h1 class="gameName">Slay The Spire</h1>
-                        <div class="row">
-                            <div class="col-sm">
-                                <h3>Challenges</h3>
-                            </div>
-                            <div class="col-sm">
-                                <button id="reset" type=" button " class="btn btn-warning btn-sm">Reset</button>
-                                <button id="reset" type=" button " class="btn btn-warning btn-sm">Save</button>
-                            </div>
-
-                        </div>
-                        <ul>
-                            <li>
-                                <h5>Challenge 1: </h5>
-                                <button id="roll1" type=" button " class="btn btn-success btn-sm ">Roll</button>
-                                <p class="chal1name"></p>
-                                <p class="chal1dif"></p>
-                                <p class="chal1Text">Waiting for Roll</p>
-                            </li>
-                            <li>
-                                <h5>Challenge 2: </h5>
-                                <button id="roll2" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal2name"></p>
-                                <p class="chal2dif"></p>
-                                <p class="chal2Text">Waiting for Roll</p>
-                            </li>
-                            <li>
-                                <h5>Challenge 3: </h5>
-                                <button id="roll3" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal3name"></p>
-                                <p class="chal3dif"></p>
-                                <p class="chal3Text">Waiting for Roll</p>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-        <div class="botbar row">
-
-        </div>
+    <div id="firebaseui-auth-container"></div>
 </body>
-
-<!--Get the games-->
-<script src="games/fortnite.js"></script>
-<script src="games/slay.js"></script>
-<script src="main.js"></script>
-
-
-
-
 
 </html>

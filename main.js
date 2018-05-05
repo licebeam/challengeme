@@ -1,4 +1,19 @@
 var curgame;
+$("#signoutButton").click(function() {
+  firebase
+    .auth()
+    .signOut()
+    .then(
+      function() {
+        console.log("Signed Out");
+        window.location.href = "index.html";
+      },
+      function(error) {
+        console.error("Sign Out Error", error);
+      }
+    );
+});
+
 curgame = slay;
 $("#gamebutton1").click(function() {
   changeGame("Slay The Spire");

@@ -46,6 +46,13 @@
                             photoURL: photoURL,
 
                         }, null, '  ');
+
+                        ///DISPLAY DATA ON USER PAGE
+
+                        var userRef = db.collection("userdata");
+                        var user = firebase.auth().currentUser;
+                        var query = userRef.where("user", "==", user.displayName);
+                        console.log(query);
                     });
                 } else {
                     // User is signed out.
@@ -158,12 +165,7 @@
     });
 
 
-    ///DISPLAY DATA ON USER PAGE
 
-    var userRef = db.collection("userdata");
-    var user = firebase.auth().currentUser;
-    var query = userRef.where("user", "==", user.displayName);
-    console.log(query);
 </script>
 
 </html>

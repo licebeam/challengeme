@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -14,6 +15,9 @@
             messagingSenderId: "339763651458"
         };
         firebase.initializeApp(config);
+        const db = firebase.firestore();
+        const settings = {/* your settings... */ timestampsInSnapshots: true };
+        db.settings(settings);
     </script>
 
     <script type="text/javascript">
@@ -23,9 +27,11 @@
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     // User is signed in.
+
                     $("#signinButton").hide();
                     $("#signoutButton").show()
                     $("#userPage").show();;
+
                     var displayName = user.displayName;
                     var email = user.email;
                     var emailVerified = user.emailVerified;
@@ -113,7 +119,10 @@
                                 <small id="nameHelp" class="form-text text-muted">Hit submit to update your user name.</small>
                             </div>
                             <button type="submit" id="updateName" class="btn btn-primary">Submit</button>
+
+
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -131,6 +140,7 @@
 
 
 <script>
+
     //auth and stuff
     $("#updateName").click(function () {
         var user = firebase.auth().currentUser;

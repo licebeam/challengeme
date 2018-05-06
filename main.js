@@ -1,5 +1,5 @@
 var curgame;
-var savegame = "Slay The Spire";
+
 var save1 = ["Hello"];
 var save2 = ["Hello"];
 var save3 = ["Hello"];
@@ -230,9 +230,11 @@ function writeToAccount(game) {
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
+      alert("Challenge Complete and Added to Account");
     })
     .catch(function(error) {
       console.error("Error adding document: ", error);
+      alert("You must be logged in to do this");
     });
 }
 $("#saveChallengeAccount").click(function() {

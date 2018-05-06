@@ -232,6 +232,7 @@ function writeToAccount(game) {
         challenge3txt: $(".chal3Text").text()
       })
       .then(function(docRef) {
+        console.log("added to database");
         alert("Challenge Complete and Added to Account");
       })
       .catch(function(error) {

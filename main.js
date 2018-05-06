@@ -210,6 +210,7 @@ $("#signinButton").click(function() {
 
 $("#homeButton").click(function() {
   window.location.href = "index.html";
+  localStorage.getItem(game + "data") = "false";
 });
 
 ///ACCOUNT DATA SAVING

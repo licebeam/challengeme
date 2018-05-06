@@ -211,10 +211,43 @@ $("#signinButton").click(function() {
 $("#homeButton").click(function() {
   window.location.href = "index.html";
 });
-///ACCOUNT DATA SAVING
 
+///ACCOUNT DATA SAVING
 function writeToAccount(game) {
   if ($("#userName").text() != "") {
+    //complete updates
+    db
+      .collection("completes")
+      .doc($("#userName").text() + "comp")
+      .set({
+        user: $("#userName").text(),
+        completes: 1
+      })
+      .then(function(docRef) {
+        console.log("added to database");
+        alert("Updated Completes");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+        alert("Error Updating");
+      });
+    db
+      .collection("completes")
+      .doc($("#userName").text() + "comp")
+      .update({
+        completes: +1
+      })
+      .then(function(docRef) {
+        console.log("added to database");
+        alert("Challenge Complete and Added to Account");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+        alert("Error add Completes");
+      });
+    //query the completes document
+
+    //add to database our data
     db
       .collection("userdata")
       .doc($("#userName").text())

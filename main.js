@@ -93,9 +93,9 @@ function saveData(game) {
     localStorage.setItem(game + "chal3-1", save3[0]);
     localStorage.setItem(game + "chal3-2", save3[1]);
     localStorage.setItem(game + "chal3-3", save3[2]);
-    alert("saved data for" + game);
+    alert("Saved data for " + game);
   } else {
-    alert("Please roll all slots");
+    alert("Please make sure to roll all slots");
   }
 }
 function loadGame(game) {
@@ -167,7 +167,7 @@ function resetData(game) {
   $(".chal3name").text(localStorage.removeItem(game + "chal3-1"));
   $(".chal3dif").text(localStorage.removeItem(game + "chal3-2"));
   $(".chal3Text").text(localStorage.removeItem(game + "chal3-3"));
-  alert("reset data for " + game);
+  alert("Reset data for " + game);
   localStorage.setItem(game + "data", "false");
   //
   $(".chal1Text").text("Waiting for Roll");

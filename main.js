@@ -214,30 +214,33 @@ $("#homeButton").click(function() {
 ///ACCOUNT DATA SAVING
 
 function writeToAccount(game) {
-  var user = firebase.auth().currentUser;
-  db
-    .collection("userdata")
-    .doc(toString(user.displayName))
-    .set({
-      user: $("#userName").text(),
-      game: game,
-      challenge1name: $(".chal1name").text(),
-      challenge1dif: $(".chal1dif").text(),
-      challenge1txt: $(".chal1Text").text(),
-      challenge2name: $(".chal2name").text(),
-      challenge2dif: $(".chal2dif").text(),
-      challenge2txt: $(".chal2Text").text(),
-      challenge3name: $(".chal3name").text(),
-      challenge3dif: $(".chal3dif").text(),
-      challenge3txt: $(".chal3Text").text()
-    })
-    .then(function(docRef) {
-      alert("Challenge Complete and Added to Account");
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-      alert("You must be logged in to do this");
-    });
+  if ($("#userName").text() != "") {
+    db
+      .collection("userdata")
+      .doc($("#userName").text())
+      .set({
+        user: $("#userName").text(),
+        game: game,
+        challenge1name: $(".chal1name").text(),
+        challenge1dif: $(".chal1dif").text(),
+        challenge1txt: $(".chal1Text").text(),
+        challenge2name: $(".chal2name").text(),
+        challenge2dif: $(".chal2dif").text(),
+        challenge2txt: $(".chal2Text").text(),
+        challenge3name: $(".chal3name").text(),
+        challenge3dif: $(".chal3dif").text(),
+        challenge3txt: $(".chal3Text").text()
+      })
+      .then(function(docRef) {
+        alert("Challenge Complete and Added to Account");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+        alert("You must be logged in to do this");
+      });
+  } else {
+    alert("incorrect user name");
+  }
 }
 $("#saveChallengeAccount").click(function() {
   testDataforSave(localStorage.getItem("game"));

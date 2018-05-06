@@ -36,6 +36,8 @@
                     var email = user.email;
                     var emailVerified = user.emailVerified;
                     var photoURL = user.photoURL;
+                    var uid = user.uid;
+                    var providerData = user.providerData;
                     $("#userName").text(displayName);
                     user.getIdToken().then(function (accessToken) {
                         document.getElementById('sign-in-status').textContent = 'Signed in';
@@ -47,12 +49,7 @@
 
                         }, null, '  ');
 
-                        ///DISPLAY DATA ON USER PAGE
 
-                        var userRef = db.collection("userdata");
-                        var user = firebase.auth().currentUser;
-                        var query = userRef.where("user", "==", user.displayName);
-                        console.log(query);
                     });
                 } else {
                     // User is signed out.
@@ -129,7 +126,8 @@
 
 
                         </form>
-
+                        <h2>Completed Challenges</h2>
+                        <div id="completedChals">111</div>
                     </div>
                 </div>
             </div>
@@ -146,7 +144,7 @@
 
 
 
-<script>
+<script type="text/javascript">
 
     //auth and stuff
     $("#updateName").click(function () {
@@ -164,6 +162,30 @@
             });
     });
 
+    //QUERY THE USER DATA FOR THE PAGE
+    $(document).ready(function () {
+        var docRef = db
+            .collection("userdata")
+            .doc($("#userName").text() + "completes");
+
+        docRef
+            .get()
+            .then(function (doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+
+                    increaseComp = doc.data().completes;
+                    increaseComp += 1;
+                    alert(increaseComp);
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            })
+            .catch(function (error) {
+                console.log("Error getting document:", error);
+            });
+    });
 
 
 </script>

@@ -213,29 +213,39 @@ $("#homeButton").click(function() {
 });
 
 ///ACCOUNT DATA SAVING
+var increaseComp = 1;
 function writeToAccount(game) {
   if ($("#userName").text() != "") {
-    //complete updates
-    db
-      .collection("completes")
-      .doc($("#userName").text() + "comp")
-      .set({
-        user: $("#userName").text(),
-        completes: 1
-      })
-      .then(function(docRef) {
-        console.log("added to database");
-        alert("Updated Completes");
+    //query
+
+    var docRef = db
+      .collection("userdata")
+      .doc($("#userName").text() + "completes");
+
+    docRef
+      .get()
+      .then(function(doc) {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+
+          increaseComp = doc.data().completes;
+          increaseComp += 1;
+          alert(increaseComp);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
       })
       .catch(function(error) {
-        console.error("Error adding document: ", error);
-        alert("Error Updating");
+        console.log("Error getting document:", error);
       });
+    //complete updates
     db
-      .collection("completes")
-      .doc($("#userName").text() + "comp")
-      .update({
-        completes: +1
+      .collection("userdata")
+      .doc($("#userName").text() + "completes")
+      .set({
+        user: $("#userName").text(),
+        completes: increaseComp
       })
       .then(function(docRef) {
         console.log("added to database");
@@ -243,7 +253,7 @@ function writeToAccount(game) {
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
-        alert("Error add Completes");
+        alert("Updating Score");
       });
     //query the completes document
 
@@ -271,7 +281,7 @@ function writeToAccount(game) {
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
-        alert("You must be logged in to do this");
+        alert("Updating Challenge Data");
       });
   } else {
     alert("incorrect user name");

@@ -8,18 +8,12 @@ var counter2 = false;
 var counter3 = false;
 curgame = slay;
 $("#gamebutton1").click(function() {
-  counter1 = false;
-  counter2 = false;
-  counter3 = false;
   localStorage.setItem("game", "Slay The Spire");
   changeGame("Slay The Spire");
   curgame = slay;
 });
 
 $("#gamebutton2").click(function() {
-  counter1 = false;
-  counter2 = false;
-  counter3 = false;
   localStorage.setItem("game", "Fortnite");
   changeGame("Fortnite");
   curgame = fort;
@@ -151,6 +145,9 @@ function loadGame(game) {
     $("#roll1").text("Roll");
     $("#roll2").text("Roll");
     $("#roll3").text("Roll");
+    counter1 = false;
+    counter2 = false;
+    counter3 = false;
   }
 }
 $("#reset").click(function() {
@@ -214,3 +211,37 @@ $("#signinButton").click(function() {
 $("#homeButton").click(function() {
   window.location.href = "index.html";
 });
+///ACCOUNT DATA SAVING
+function writeToAccount(game) {
+  db
+    .collection("userdata")
+    .add({
+      user: $("#userName").text(),
+      game: game,
+      challenge1name: $(".chal1name").text(),
+      challenge1dif: $(".chal1dif").text(),
+      challenge1txt: $(".chal1Text").text(),
+      challenge2name: $(".chal2name").text(),
+      challenge2dif: $(".chal2dif").text(),
+      challenge2txt: $(".chal2Text").text(),
+      challenge3name: $(".chal3name").text(),
+      challenge3dif: $(".chal3dif").text(),
+      challenge3txt: $(".chal3Text").text()
+    })
+    .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+    });
+}
+$("#saveChallengeAccount").click(function() {
+  testDataforSave(localStorage.getItem("game"));
+});
+function testDataforSave(game) {
+  if (localStorage.getItem(game + "data") === "true") {
+    writeToAccount(localStorage.getItem("game"));
+  } else if (localStorage.getItem(game + "data") === "false") {
+    alert("No Empty Challenges Please");
+  }
+}

@@ -37,9 +37,6 @@ function changeGame(name) {
   $(".chal1dif").text("");
   $(".chal2dif").text("");
   $(".chal3dif").text("");
-  $("#roll1").text("Roll");
-  $("#roll2").text("Roll");
-  $("#roll3").text("Roll");
   loadGame(localStorage.getItem("game"));
 }
 $("#roll1").click(function() {
@@ -109,6 +106,9 @@ function saveData(game) {
 }
 function loadGame(game) {
   if (localStorage.getItem(game + "data") === "true") {
+    $("#roll1").text("Re-Roll?");
+    $("#roll2").text("Re-Roll?");
+    $("#roll3").text("Re-Roll?");
     $(".chal1name").text(localStorage.getItem(game + "chal1-1"));
     $(".chal1dif").text(localStorage.getItem(game + "chal1-2"));
     $(".chal1Text").text(localStorage.getItem(game + "chal1-3"));
@@ -147,6 +147,10 @@ function loadGame(game) {
     if (localStorage.getItem(game + "chal3-2") === "Hard") {
       $(".chal3dif").css("color", "red");
     }
+  } else if (localStorage.getItem(game + "data") === "false") {
+    $("#roll1").text("Roll");
+    $("#roll2").text("Roll");
+    $("#roll3").text("Roll");
   }
 }
 $("#reset").click(function() {

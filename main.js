@@ -217,7 +217,7 @@ function writeToAccount(game) {
   var user = firebase.auth().currentUser;
   db
     .collection("userdata")
-    .doc("test")
+    .doc(toString(user.displayName))
     .set({
       user: $("#userName").text(),
       game: game,

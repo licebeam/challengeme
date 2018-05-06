@@ -212,10 +212,13 @@ $("#homeButton").click(function() {
   window.location.href = "index.html";
 });
 ///ACCOUNT DATA SAVING
+
 function writeToAccount(game) {
+  var user = firebase.auth().currentUser;
   db
     .collection("userdata")
-    .add({
+    .doc("test")
+    .set({
       user: $("#userName").text(),
       game: game,
       challenge1name: $(".chal1name").text(),
@@ -229,7 +232,6 @@ function writeToAccount(game) {
       challenge3txt: $(".chal3Text").text()
     })
     .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
       alert("Challenge Complete and Added to Account");
     })
     .catch(function(error) {

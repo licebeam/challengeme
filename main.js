@@ -221,6 +221,7 @@ function writeToAccount(game) {
       .set({
         user: $("#userName").text(),
         game: game,
+
         challenge1name: $(".chal1name").text(),
         challenge1dif: $(".chal1dif").text(),
         challenge1txt: $(".chal1Text").text(),

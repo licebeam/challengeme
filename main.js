@@ -98,8 +98,10 @@ function saveData(game) {
     alert("Please make sure to roll all slots");
   }
 }
+
 function loadGame(game) {
   if (localStorage.getItem(game + "data") === "true") {
+    counter1 && counter2 && counter3 === true;
     $("#roll1").text("Re-Roll?");
     $("#roll2").text("Re-Roll?");
     $("#roll3").text("Re-Roll?");
@@ -150,6 +152,7 @@ function loadGame(game) {
     counter3 = false;
   }
 }
+
 $("#reset").click(function() {
   resetData(localStorage.getItem("game"));
 });
@@ -183,10 +186,6 @@ function resetData(game) {
   $("#roll2").text("Roll");
   $("#roll3").text("Roll");
 }
-$("#homeButton").click(function() {
-  //signed in input
-  window.location.href = "index.html";
-});
 
 $("#signoutButton").click(function() {
   firebase
@@ -210,37 +209,41 @@ $("#signinButton").click(function() {
 
 $("#homeButton").click(function() {
   window.location.href = "index.html";
-  localStorage.getItem(game + "data") = "false";
 });
-
-///ACCOUNT DATA SAVING
+$("#gamesButton").click(function() {
+  window.location.href = "home.html";
+});
+///ACCOUNT DATA SAVING------
 var increaseComp = 1;
+
+//query
+setTimeout(() => {
+  var docRef = db
+    .collection("userdata")
+    .doc($("#userName").text() + "completes");
+
+  docRef
+    .get()
+    .then(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+
+        increaseComp = doc.data().completes;
+        increaseComp += 1;
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    .catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+
+  //query the completes document
+}, 1000);
 function writeToAccount(game) {
   if ($("#userName").text() != "") {
-    //query
-
-    var docRef = db
-      .collection("userdata")
-      .doc($("#userName").text() + "completes");
-
-    docRef
-      .get()
-      .then(function(doc) {
-        if (doc.exists) {
-          console.log("Document data:", doc.data());
-
-          increaseComp = doc.data().completes;
-          increaseComp += 1;
-          alert(increaseComp);
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-        }
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
-    //complete updates
+    //update number of completes on profile
     db
       .collection("userdata")
       .doc($("#userName").text() + "completes")
@@ -250,13 +253,10 @@ function writeToAccount(game) {
       })
       .then(function(docRef) {
         console.log("added to database");
-        alert("Challenge Complete and Added to Account");
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
-        alert("Updating Score");
       });
-    //query the completes document
 
     //add to database our data
     db
@@ -292,9 +292,9 @@ $("#saveChallengeAccount").click(function() {
   testDataforSave(localStorage.getItem("game"));
 });
 function testDataforSave(game) {
-  if (localStorage.getItem(game + "data") === "true") {
+  if (counter1 && counter2 && counter3 === true) {
     writeToAccount(localStorage.getItem("game"));
-  } else if (localStorage.getItem(game + "data") === "false") {
+  } else if (counter1 && counter2 && counter3 === false) {
     alert("No Empty Challenges Please");
   }
 }

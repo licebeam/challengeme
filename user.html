@@ -110,7 +110,9 @@
     <div class="container">
         <div class="row">
             <div class="col-4 col-sm-2 gameList mx-auto">
-                <button type=" button " id="homeButton" class="btn btn-primary ">Home</button>
+                <button type=" button " id="homeButton" class="btn btn-primary mx-auto d-block ">Home</button>
+
+                <button type=" button " id="gamesButton" class="btn btn-primary mx-auto d-block ">Games</button>
             </div>
             <div class="col-8 col-sm-10 titlePage">
                 <div class="row mainArea">
@@ -168,27 +170,27 @@
 
     //QUERY THE USER DATA FOR THE PAGE
     setTimeout(() => {
-        $(document).ready(function () {
-            var docRef1 = db
-                .collection("userdata")
-                .doc($("#userName").text() + "completes");
 
-            docRef1
-                .get()
-                .then(function (doc) {
-                    if (doc.exists) {
-                        console.log("Document data:", doc.data());
+        var docRef1 = db
+            .collection("userdata")
+            .doc($("#userName").text() + "completes");
 
-                        $("#completedChals").text(doc.data().completes);
-                    } else {
-                        // doc.data() will be undefined in this case
-                        console.log("No such document!");
-                    }
-                })
-                .catch(function (error) {
-                    console.log("Error getting document:", error);
-                });
-        });
+        docRef1
+            .get()
+            .then(function (doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+
+                    $("#completedChals").text(doc.data().completes);
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            })
+            .catch(function (error) {
+                console.log("Error getting document:", error);
+            });
+
     }, 1000);
 
 

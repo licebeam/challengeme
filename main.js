@@ -225,7 +225,6 @@ $("#howButton").click(function() {
 });
 ///ACCOUNT DATA SAVING------
 var increaseComp = 1;
-
 //query
 setTimeout(() => {
   var docRef = db
@@ -240,6 +239,7 @@ setTimeout(() => {
 
         increaseComp = doc.data().completes;
         increaseComp += 1;
+        $("#completedChals").text(increaseComp);
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -251,6 +251,7 @@ setTimeout(() => {
 
   //query the completes document
 }, 1000);
+
 function writeToAccount(game) {
   if ($("#userName").text() != "") {
     //update number of completes on profile

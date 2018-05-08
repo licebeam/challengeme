@@ -152,7 +152,7 @@
 
             </div>
 
-            <div class="col-8 col-sm-6 titlePage">
+            <div class="col-8 col-sm-6 titlePage mx-auto">
                 <div class="row mainArea">
 
                     <div class="col centerArea slayImg">
@@ -161,63 +161,86 @@
                         <div class="row">
                             <div class="col-sm">
                                 <p>Click Roll to choose a random challenge for your chosen game.</p>
-                                <h3>Challenges</h3>
+
                             </div>
                             <div class="col-sm">
+                                <h3>Challenges</h3>
                                 <button id="reset" type=" button " class="btn btn-warning btn-sm">Reset</button>
                                 <button id="saveIt" type=" button " class="btn btn-warning btn-sm">Save</button>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                    Complete Challenge
-                                </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="completeTask" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title" id="exampleModalLongTitle">Congratulations</h1>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h2 class="darkText">Great Job!</h2>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" id="saveChallengeAccount" data-dismiss="modal" class="btn btn-primary">Save To Account</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <ul>
                             <li>
-                                <h5>Challenge 1: </h5>
-                                <button id="roll1" type=" button " class="btn btn-success btn-sm ">Roll</button>
-                                <p class="chal1name"></p>
-                                <p class="chal1dif"></p>
-                                <p class="chal1Text">Waiting for Roll</p>
+
+                                <div class="card gameCard">
+                                    <div class="card-header">
+                                        <div>
+                                            <img id="cardIcon" src="/bg/cardIcon.png" alt="">
+                                            <button id="roll1" type=" button " class="btn btn-success btn-sm ">Roll</button>
+                                            <h4 class="chal1name">CARD TITLE</h4>
+                                            <p class="chal1dif"></p>
+                                        </div>
+                                    </div>
+                                    <p class="chal1Text">Waiting for Roll</p>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="card gameCard">
+                                    <div class="card-header">
+                                        <div>
+                                            <img id="cardIcon" src="/bg/cardIcon.png" alt="">
+                                            <button id="roll2" type=" button " class="btn btn-success btn-sm ">Roll</button>
+                                            <h4 class="chal2name">CARD TITLE</h4>
+                                            <p class="chal2dif"></p>
+                                        </div>
+                                    </div>
+                                    <p class="chal2Text">Waiting for Roll</p>
+                                </div>
                             </li>
                             <li>
-                                <h5>Challenge 2: </h5>
-                                <button id="roll2" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal2name"></p>
-                                <p class="chal2dif"></p>
-                                <p class="chal2Text">Waiting for Roll</p>
-                            </li>
-                            <li>
-                                <h5>Challenge 3: </h5>
-                                <button id="roll3" type=" button " class="btn btn-success btn-sm">Roll</button>
-                                <p class="chal3name"></p>
-                                <p class="chal3dif"></p>
-                                <p class="chal3Text">Waiting for Roll</p>
+                                <div class="card gameCard">
+                                    <div class="card-header">
+                                        <div>
+                                            <img id="cardIcon" src="/bg/cardIcon.png" alt="">
+                                            <button id="roll3" type=" button " class="btn btn-success btn-sm ">Roll</button>
+                                            <h4 class="chal3name">CARD TITLE</h4>
+                                            <p class="chal3dif"></p>
+                                        </div>
+                                    </div>
+                                    <p class="chal3Text">Waiting for Roll</p>
+                                </div>
                             </li>
 
                         </ul>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Complete Challenge
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="completeTask" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="exampleModalLongTitle">Congratulations</h1>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2 class="darkText">Great Job!</h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" id="saveChallengeAccount" data-dismiss="modal" class="btn btn-primary">Save To Account</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 

@@ -220,6 +220,9 @@ $("#homeButton").click(function() {
 $("#gamesButton").click(function() {
   window.location.href = "home.html";
 });
+$("#howButton").click(function() {
+  window.location.href = "how.html";
+});
 ///ACCOUNT DATA SAVING------
 var increaseComp = 1;
 
@@ -289,10 +292,10 @@ function writeToAccount(game) {
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
-        alert("Updating Challenge Data");
+        console.log("Updating Challenge Data");
       });
   } else {
-    alert("incorrect user name");
+    alert("Please Log In To Use This");
   }
 }
 $("#saveChallengeAccount").click(function() {

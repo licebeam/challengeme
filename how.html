@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
     <script>
@@ -19,20 +20,19 @@
         const settings = {/* your settings... */ timestampsInSnapshots: true };
         db.settings(settings);
     </script>
-
     <script type="text/javascript">
         initApp = function () {
             $("#signinButton").hide();
             $("#signoutButton").hide();
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
+
                     // User is signed in.
 
-                    $("#signinButton").hide();
-                    $("#signoutButton").show()
-                    $("#userPage").show();;
-
                     var displayName = user.displayName;
+                    $("#signinButton").hide();
+                    $("#signoutButton").show();
+                    $("#userPage").show();
                     var email = user.email;
                     var emailVerified = user.emailVerified;
                     var photoURL = user.photoURL;
@@ -48,18 +48,19 @@
                             photoURL: photoURL,
 
                         }, null, '  ');
-
-
                     });
                 } else {
                     // User is signed out.
                     $("#signinButton").show();
-                    $("#signoutButton").hide();
                     $("#userPage").hide();
+                    $("#signoutButton").hide();
+
+                    document.getElementById('account-details').textContent = 'null';
                     document.getElementById('sign-in-status').textContent = 'Signed out';
                     $("#userName").text('');
-                    document.getElementById('account-details').textContent = 'null';
                     document.getElementById('sign-in').textContent = 'Sign in';
+
+
                 }
             }, function (error) {
                 console.log(error);
@@ -70,21 +71,23 @@
             initApp()
         });
     </script>
-
     <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Challenge Me pre-alpha v.03</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -104,11 +107,15 @@
         <button type=" button " id="signoutButton" class="btn btn-primary ">
             <div>Sign Out</div>
         </button>
+
         <a id="userPage" href="user.html">Account</a>
         </div>
     </nav>
     <div class="container">
+
+
         <div class="row">
+
             <div class="col-4 col-sm-2 gameList mx-auto">
                 <button type=" button " id="homeButton" class="btn btn-primary mx-auto d-block ">Home</button>
 
@@ -120,91 +127,53 @@
                 <em></em>
                 <h5 id="infotag">Information</h5>
                 <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="howButton" class="btn btn-primary ">How it works</button>
+                    <button type=" button " id="gamebutton1" class="btn btn-primary ">How it works</button>
                 </div>
 
             </div>
-            <div class="col-8 col-sm-10 titlePage ">
-                <div class="row mainArea ">
-                    <div class="col centerArea ">
-                        <h1>User Information</h1>
-                        <form>
-                            <div class="form-group ">
-                                <label for="nameupdate ">User Name</label>
-                                <input type="Name " class="form-control " id="nameUpdater " aria-describedby="nameHelp
-                        " placeholder="Enter new user name ">
-                                <small id="nameHelp " class="form-text text-muted ">Hit submit to update your user name. Please note that this will eliminate all saved progress.</small>
-                            </div>
-                            <button type="submit " id="updateName " class="btn btn-primary ">Submit</button>
 
+            <div class="col-8 col-sm-10 titlePage">
+                <div class="row mainArea">
+                    <div class="col centerArea">
+                        <div>
+                            <h1>How It Works</h1>
+                            <h2>Global Challenges</h2>
+                            <p>Each game has a set of global challenges you can roll and attempt to complete.</p>
+                        </div>
 
-                        </form>
-                        <h3>Completed Challenges:
-                            <div id="completedChals "></div>
-                        </h3>
+                        <div>
+                            <h2>Honor System</h2>
+                            <p>Since Challenge Me cannot verify your completed challenges we rely on an honor system. Users
+                                are able to upload any completed challenge they want.</p>
+                        </div>
+
+                        <div>
+                            <h2>Account</h2>
+                            <p>Currently your account will save the number of challenges you have completed</p>
+                        </div>
+
 
                     </div>
                 </div>
+
+
             </div>
+
+
         </div>
-        <div class="botbar row ">
+
+        <div class="botbar row">
+
         </div>
 </body>
 
 <!--Get the games-->
-<script src="games/fortnite.js "></script>
-<script src="games/slay.js "></script>
-<script src="main.js "></script>
+<script src="games/fortnite.js"></script>
+<script src="games/slay.js"></script>
+<script src="main.js"></script>
 
 
 
 
-<script type="text/javascript ">
-
-    //auth and stuff
-    $("#updateName ").click(function () {
-        var user = firebase.auth().currentUser;
-
-        user
-            .updateProfile({
-                displayName: $("#nameUpdater ").val() //THIS NEEDS TO BE VALIDATED FOR INJECTION
-            })
-            .then(function () {
-                //ok
-            })
-            .catch(function (error) {
-                //fixed
-            });
-
-
-    });
-
-    //QUERY THE USER DATA FOR THE PAGE
-    setTimeout(() => {
-
-        var docRef1 = db
-            .collection("userdata ")
-            .doc($("#userName ").text() + "completes ");
-
-        docRef1
-            .get()
-            .then(function (doc) {
-                if (doc.exists) {
-                    console.log("Document data: ", doc.data());
-
-                    $("#completedChals ").text(doc.data().completes);
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document! ");
-                }
-            })
-            .catch(function (error) {
-                console.log("Error getting document: ", error);
-            });
-
-    }, 1000);
-
-
-</script>
 
 </html>

@@ -305,7 +305,3 @@ function testDataforSave(game) {
     alert("No Empty Challenges Please");
   }
 }
-
-setInterval(() => {
-  console.log(counter1);
-}, 500);

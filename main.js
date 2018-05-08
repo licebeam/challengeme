@@ -32,7 +32,7 @@ function changeGame(name) {
   $(".chal2dif").text("");
   $(".chal3dif").text("");
   loadGame(localStorage.getItem("game"));
-  if (localStorage.getItem(game + "data") === "false") {
+  if (localStorage.getItem(name + "data") === "false") {
     counter1 = false;
     counter2 = false;
     counter3 = false;
@@ -99,7 +99,7 @@ function saveData(game) {
     localStorage.setItem(game + "chal3-2", save3[1]);
     localStorage.setItem(game + "chal3-3", save3[2]);
     alert("Saved data for " + game);
-  } else {
+  } else if (counter1 || counter2 || counter3 === false) {
     alert("Please make sure to roll all slots");
   }
 }
@@ -301,7 +301,11 @@ $("#saveChallengeAccount").click(function() {
 function testDataforSave(game) {
   if (counter1 && counter2 && counter3 === true) {
     writeToAccount(localStorage.getItem("game"));
-  } else if (counter1 && counter2 && counter3 === false) {
+  } else if (counter1 || counter2 || counter3 === false) {
     alert("No Empty Challenges Please");
   }
 }
+
+setInterval(() => {
+  console.log(counter1);
+}, 500);

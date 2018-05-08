@@ -92,36 +92,51 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-light ">
-        <h1>Challenge Me</h1>
-        <p id="subText">Challenge Me is a web app focused on Challenging players of various games</p>
-        <div id="userName"></div>
-
-        <button type=" button " id="signinButton" class="btn btn-primary ">
-            <div>Sign In</div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <h1>Challenge Me</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <button type=" button " id="signoutButton" class="btn btn-primary ">
-            <div>Sign Out</div>
-        </button>
-        <a id="userPage" href="user.html">Account</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" id="homeButton" href="index.html">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="aboutButton" href="how.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="aboutButton" href="home.html">Games</a>
+                </li>
+
+
+            </ul>
         </div>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" id="userName"></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="userPage" href="user.html">Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="signinButton" href="login.html">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="signoutButton" href="">Sign Out</a>
+            </li>
+        </ul>
+
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-4 col-sm-2 gameList mx-auto">
-                <button type=" button " id="homeButton" class="btn btn-primary mx-auto d-block ">Home</button>
 
-                <button type=" button " id="gamesButton" class="btn btn-primary mx-auto d-block ">Games</button>
-
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-
-                </div>
-                <em></em>
-                <h5 id="infotag">Information</h5>
-                <div class="btn-group-vertical sidebuttons mx-auto d-block">
-                    <button type=" button " id="howButton" class="btn btn-primary ">How it works</button>
-                </div>
 
             </div>
             <div class="col-8 col-sm-10 titlePage ">
@@ -147,10 +162,14 @@
                 </div>
             </div>
         </div>
-        <div class="botbar row ">
+
+        <div class="botbar row">
+
         </div>
 </body>
-
+<div class="snackBar animated">
+    <h3 id="snackText">Testing</h3>
+</div>
 <!--Get the games-->
 <script src="games/fortnite.js "></script>
 <script src="games/slay.js "></script>

@@ -13,9 +13,9 @@ body
     color: $alttextC;
     font-family: $subfont;
     background-color: #A60531;
-    background-image: url("bg/hauntedhouse.jpg")
+    background-image: url("bg/card2.jpg")
     
-
+    
 h1
     font-family: $titlefont;
     color: $mainPink;
@@ -24,7 +24,6 @@ h1
     background-color: $darkC;
 
 .mainArea
-    
     height: 100vh;
     background-color: $lightC;
 
@@ -37,6 +36,7 @@ h1
 .sidebar
     background-color: $midC;
     height: 100vh;
+
 #gametag 
     margin-top: 20px;
     text-align: center;
@@ -46,20 +46,19 @@ h1
     margin-top: 40px;
     text-align: center;
     color: white;
+
 .gameName
     font-size: 30pt;
 li 
     margin: 0 auto;
    
-
 ul 
     list-style: none;
     margin: 0;
     padding: 0;
 
-
 #subtext 
-    margin-left: 20px;
+    line-height: 1;
 
 .centerArea 
     padding: 20px 60px 0px 60px; 
@@ -80,11 +79,78 @@ ul
     margin: 0 auto;
     padding: 0;
 
+#howButton 
+    margin-top: 10px;
+
 .sidebuttons
-   
     text-align: center;
+//topbar buttons
+#signinButton, #signoutButton
+    
+
+.nav-link
+    color: white;
+//nav link colors
+a.nav-link 
+    color: #FFFFFF !important
+a.nav-link:hover
+     color: #F00F00;
+     text-decoration: none !important
+//background images
+.imgBoyCol
+    background-color: #A60531;
+    background-image: url("bg/fort.jpg")
+    background-position-x: 90%;
+    background-size: cover;
+    
+    
+    
+.centerArea
+    position: relative;
+    z-index: 1;
+.centerArea::After
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;  
+    opacity: .1; 
+    z-index: -100;
+    background: url(bg/slaybg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 
 
+//MODAL FIXES
+.modal-backdrop 
+  z-index: -1;
+
+
+
+body 
+  padding-right: 0px !important
+
+
+.modal-open 
+  overflow-y: scroll;
+
+///SNACKBAR
+.snackBar
+    color: $mainPink;
+    visibility: hidden;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: fixed;
+    left: 35%
+    text-align: center;
+    background-color: white;
+    top: 100px
+    width: 500px;
+    height: 50px;
+    z-index: 100;
+//IOS DEVICES
 @media screen and (max-width: 700px)
     .gameName
         font-size: 20pt;

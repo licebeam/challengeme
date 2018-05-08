@@ -10,6 +10,7 @@ curgame = slay;
 $("#gamebutton1").click(function() {
   localStorage.setItem("game", "Slay The Spire");
   changeGame("Slay The Spire");
+  $(".imgBoyCol").css("background-image", "url('bg/spire.jpg')");
   curgame = slay;
 });
 
@@ -17,6 +18,7 @@ $("#gamebutton2").click(function() {
   localStorage.setItem("game", "Fortnite");
   changeGame("Fortnite");
   curgame = fort;
+  $(".imgBoyCol").css("background-image", "url('bg/fort.jpg')");
 });
 
 function changeGame(name) {
@@ -98,9 +100,9 @@ function saveData(game) {
     localStorage.setItem(game + "chal3-1", save3[0]);
     localStorage.setItem(game + "chal3-2", save3[1]);
     localStorage.setItem(game + "chal3-3", save3[2]);
-    alert("Saved data for " + game);
+    snackText("Saved data for " + game);
   } else if (counter1 || counter2 || counter3 === false) {
-    alert("Please make sure to roll all slots");
+    snackText("Please make sure to roll all slots");
   }
 }
 
@@ -177,7 +179,7 @@ function resetData(game) {
   $(".chal3name").text(localStorage.removeItem(game + "chal3-1"));
   $(".chal3dif").text(localStorage.removeItem(game + "chal3-2"));
   $(".chal3Text").text(localStorage.removeItem(game + "chal3-3"));
-  alert("Reset data for " + game);
+  snackText("Reset data for " + game);
   localStorage.setItem(game + "data", "false");
   //
   $(".chal1Text").text("Waiting for Roll");
@@ -289,14 +291,14 @@ function writeToAccount(game) {
       })
       .then(function(docRef) {
         console.log("added to database");
-        alert("Challenge Complete and Added to Account");
+        snackText("Challenge Complete and Added to Account");
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
         console.log("Updating Challenge Data");
       });
   } else {
-    alert("Please Log In To Use This");
+    snackText("Please Log In");
   }
 }
 $("#saveChallengeAccount").click(function() {
@@ -306,6 +308,20 @@ function testDataforSave(game) {
   if (counter1 && counter2 && counter3 === true) {
     writeToAccount(localStorage.getItem("game"));
   } else if (counter1 || counter2 || counter3 === false) {
-    alert("No Empty Challenges Please");
+    snackText("No Empty Challenges Please");
   }
+}
+
+function snackText(txt) {
+  $(".snackBar").css("visibility", "visible");
+  $(".snackBar").addClass("fadeInUp");
+  $("#snackText").text(txt);
+  setTimeout(() => {
+    $(".snackBar").removeClass("fadeInUp");
+    $(".snackBar").addClass("fadeOutDown");
+  }, 800);
+  setTimeout(() => {
+    $(".snackBar").css("visibility", "hidden");
+    $(".snackBar").removeClass("fadeOutDown");
+  }, 1500);
 }

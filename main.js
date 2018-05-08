@@ -32,6 +32,11 @@ function changeGame(name) {
   $(".chal2dif").text("");
   $(".chal3dif").text("");
   loadGame(localStorage.getItem("game"));
+  if (localStorage.getItem(game + "data") === "false") {
+    counter1 = false;
+    counter2 = false;
+    counter3 = false;
+  }
 }
 $("#roll1").click(function() {
   counter1 = true;
@@ -101,7 +106,9 @@ function saveData(game) {
 
 function loadGame(game) {
   if (localStorage.getItem(game + "data") === "true") {
-    counter1 && counter2 && counter3 === true;
+    counter1 = true;
+    counter2 = true;
+    counter3 = true;
     $("#roll1").text("Re-Roll?");
     $("#roll2").text("Re-Roll?");
     $("#roll3").text("Re-Roll?");

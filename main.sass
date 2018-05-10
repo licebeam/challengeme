@@ -24,18 +24,26 @@ h1
     background-color: $darkC;
 
 .mainArea
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
     background-color: $lightC;
 
 .gameList
+    //fix this to match the hight of the card panel
     background-color: $midC;
-    height: 100vh;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
 
 
 .sidebar
     background-color: $midC;
-    height: 100vh;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
 
 #gametag 
     margin-top: 20px;

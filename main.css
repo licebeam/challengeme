@@ -19,19 +19,26 @@ h1 {
 }
 
 .mainArea {
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
   background-color: #002937;
 }
 
 .gameList {
   background-color: #001920;
-  height: 100vh;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
 }
 
 .sidebar {
   background-color: #001920;
-  height: 100vh;
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
 }
 
 #gametag {

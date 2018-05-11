@@ -22,15 +22,23 @@ h1 {
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
   background-color: #002937;
 }
 
-.gameList {
-  background-color: #001920;
+.gameArea {
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  background-color: #001920;
+}
+
+.imgBoyCol {
+  background-color: #A60531;
+  background-image: url("bg/fort.jpg");
+  background-position-x: 90%;
+  background-size: cover;
+  min-height: 100vh;
+  background-color: #001920;
 }
 
 .sidebar {
@@ -111,13 +119,6 @@ a.nav-link {
 a.nav-link:hover {
   color: #F00F00;
   text-decoration: none !important;
-}
-
-.imgBoyCol {
-  background-color: #A60531;
-  background-image: url("bg/fort.jpg");
-  background-position-x: 90%;
-  background-size: cover;
 }
 
 .centerArea {
@@ -211,16 +212,13 @@ body {
     font-size: 10pt;
   }
   .mainArea {
-    height: 100%;
     background-color: #002937;
   }
   .gameList {
     background-color: #001920;
-    height: 120vh;
   }
   .sidebar {
     background-color: #001920;
-    height: 200vh;
   }
 }
 /*# sourceMappingURL=main.css.map */

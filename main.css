@@ -18,6 +18,10 @@ h1 {
   background-color: #00010F;
 }
 
+.navbar-toggler {
+  background-color: #D82668;
+}
+
 .mainArea {
   min-height: 100vh;
   display: flex;

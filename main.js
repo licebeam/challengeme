@@ -7,14 +7,14 @@ var counter1 = false;
 var counter2 = false;
 var counter3 = false;
 curgame = slay;
-$("#gamebutton1").click(function() {
+$("#gamebutton1").click(function () {
   localStorage.setItem("game", "Slay The Spire");
   changeGame("Slay The Spire");
   $(".imgBoyCol").css("background-image", "url('bg/spire.jpg')");
   curgame = slay;
 });
 
-$("#gamebutton2").click(function() {
+$("#gamebutton2").click(function () {
   localStorage.setItem("game", "Fortnite");
   changeGame("Fortnite");
   curgame = fort;
@@ -40,15 +40,16 @@ function changeGame(name) {
     counter3 = false;
   }
 }
-$("#roll1").click(function() {
-  counter1 = true;
-  randomChal1(curgame);
-});
-$("#roll2").click(function() {
+$("#roll1")
+  .click(function () {
+    counter1 = true;
+    randomChal1(curgame);
+  });
+$("#roll2").click(function () {
   counter2 = true;
   randomChal2(curgame);
 });
-$("#roll3").click(function() {
+$("#roll3").click(function () {
   counter3 = true;
   randomChal3(curgame);
 });
@@ -85,9 +86,10 @@ function randomEvent(box, gamenum, save) {
   save[1] = $(box + "dif").text();
   save[2] = $(box + "Text").text();
 }
-$("#saveIt").click(function() {
-  saveData(localStorage.getItem("game"));
-});
+$("#saveIt")
+  .click(function () {
+    saveData(localStorage.getItem("game"));
+  });
 function saveData(game) {
   if (counter1 && counter2 && counter3 === true) {
     localStorage.setItem(game + "data", "true");
@@ -162,9 +164,10 @@ function loadGame(game) {
   }
 }
 
-$("#reset").click(function() {
-  resetData(localStorage.getItem("game"));
-});
+$("#reset")
+  .click(function () {
+    resetData(localStorage.getItem("game"));
+  });
 function resetData(game) {
   //reset save data
   counter1 = false;
@@ -196,33 +199,31 @@ function resetData(game) {
   $("#roll3").text("Roll");
 }
 
-$("#signoutButton").click(function() {
-  firebase
-    .auth()
-    .signOut()
-    .then(
-      function() {
+$("#signoutButton")
+  .click(function () {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
         console.log("Signed Out");
         window.location.href = "index.html";
-      },
-      function(error) {
+      }, function (error) {
         console.error("Sign Out Error", error);
-      }
-    );
-});
+      });
+  });
 
-$("#signinButton").click(function() {
+$("#signinButton").click(function () {
   //signed in input
   window.location.href = "login.html";
 });
 
-$("#homeButton").click(function() {
+$("#homeButton").click(function () {
   window.location.href = "index.html";
 });
-$("#gamesButton").click(function() {
+$("#gamesButton").click(function () {
   window.location.href = "home.html";
 });
-$("#howButton").click(function() {
+$("#howButton").click(function () {
   window.location.href = "how.html";
 });
 ///ACCOUNT DATA SAVING------
@@ -235,11 +236,13 @@ setTimeout(() => {
 
   docRef
     .get()
-    .then(function(doc) {
+    .then(function (doc) {
       if (doc.exists) {
         console.log("Document data:", doc.data());
 
-        increaseComp = doc.data().completes;
+        increaseComp = doc
+          .data()
+          .completes;
         increaseComp += 1;
         $("#completedChals").text(increaseComp);
       } else {
@@ -247,7 +250,7 @@ setTimeout(() => {
         console.log("No such document!");
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting document:", error);
     });
 
@@ -264,10 +267,10 @@ function writeToAccount(game) {
         user: $("#userName").text(),
         completes: increaseComp
       })
-      .then(function(docRef) {
+      .then(function (docRef) {
         console.log("added to database");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("Error adding document: ", error);
       });
 
@@ -289,11 +292,11 @@ function writeToAccount(game) {
         challenge3dif: $(".chal3dif").text(),
         challenge3txt: $(".chal3Text").text()
       })
-      .then(function(docRef) {
+      .then(function (docRef) {
         console.log("added to database");
         snackText("Challenge Complete and Added to Account");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("Error adding document: ", error);
         console.log("Updating Challenge Data");
       });
@@ -301,9 +304,10 @@ function writeToAccount(game) {
     snackText("Please Log In");
   }
 }
-$("#saveChallengeAccount").click(function() {
-  testDataforSave(localStorage.getItem("game"));
-});
+$("#saveChallengeAccount")
+  .click(function () {
+    testDataforSave(localStorage.getItem("game"));
+  });
 function testDataforSave(game) {
   if (counter1 && counter2 && counter3 === true) {
     writeToAccount(localStorage.getItem("game"));
@@ -313,15 +317,19 @@ function testDataforSave(game) {
 }
 
 function snackText(txt) {
+
   $(".snackBar").css("visibility", "visible");
-  $(".snackBar").addClass("fadeInUp");
+  $(".snackBar").addClass("fadeInDown");
   $("#snackText").text(txt);
+
   setTimeout(() => {
-    $(".snackBar").removeClass("fadeInUp");
-    $(".snackBar").addClass("fadeOutDown");
-  }, 800);
+    $(".snackBar").removeClass("fadeInDown");
+    $(".snackBar").addClass("fadeOutUp");
+
+  }, 1000);
   setTimeout(() => {
     $(".snackBar").css("visibility", "hidden");
-    $(".snackBar").removeClass("fadeOutDown");
-  }, 1500);
+    $(".snackBar").removeClass("fadeOutUp");
+
+  }, 2000);
 }
